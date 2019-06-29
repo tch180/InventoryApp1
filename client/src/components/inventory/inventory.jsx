@@ -13,7 +13,9 @@ class inventory extends Component {
 
     componentWillMount() {
         this.getAllItems();
+
     }
+    
 
 
   
@@ -39,6 +41,7 @@ class inventory extends Component {
         try {
             const res = await axios.delete(`/api/items/${id}`)
             this.getAllItems()
+            console.log(res.data)
 
         }catch (error) {
             console.log(error)

@@ -8,8 +8,6 @@ class Api::ItemsController < ApplicationController
 
 
     def create 
-      
-
        @items = Item.create!(items_params)
         render json: Item.all
     # end
@@ -35,7 +33,7 @@ class Api::ItemsController < ApplicationController
 
     private 
      def items_params
-        params.permit(:items).permit(:name, :sku, :price, :available, :description, :photo, :id )
+        params.require(:items).permit(:name, :sku, :price, :available, :description, :photo, :id )
      end
 
 
