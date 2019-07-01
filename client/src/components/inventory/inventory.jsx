@@ -3,13 +3,11 @@ import axios from 'axios';
 
 
 class inventory extends Component {
-    constructor(){
-        super();
-        this.state = {
+    state = {
             error: '',
             items:[]
         }
-    }
+    
 
     componentWillMount() {
         this.getAllItems();

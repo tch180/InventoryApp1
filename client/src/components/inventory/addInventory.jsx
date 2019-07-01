@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 class addInventory extends Component {
-        
-            state = {
+        state = {
                 items: {
                     name: '',
                     price:'',
@@ -11,64 +10,34 @@ class addInventory extends Component {
                     description:'',
                     photo:'',
                     available:'',
-                
                    } 
-                };
-                   
-                
-            
-                      
-        
-              
-         
-        
-
-      
-
-
-            handleChange = (event) => {
-                const updateItems = {
-                    ...this.state.items
-                }
-                updateItems[event.target.name] = event.target.value
-                this.setState({ items: updateItems })
-              }
-
-
-          
+            }
+       
             
         ///////////////
-        // Handle Submit Works, handle Change is not capturing the data from the form. 
+        // Handle Submit Works, Handle Change works and is capturing data, I believe this is because the form needed to have the ID and Name Fields set to each one.  
         ///////////////
 
     
 
             handleSubmit = async (event) => {
                 event.preventDefault();
-                await axios.post(`/api/items`, {items: this.state.items});
+                await  axios.post(`/api/items`, { items: this.state.items });
+               
+                console.log("Submitting", this.state.items)
+                // console.log(this.inputNode.value)
+            };
+
+            handleChange = (event)=>{
+                const newState = {...this.state.items}
+                newState[event.target.name] = event.target.value
+                this.setState({items: newState})
             }
 
-
-
-
-            //  handleChange = async (event) => {
-            //     const name = event.target.name
-            //     const updateItemsName = {...this.state.items}
-            //     const updateItems = {...this.state.items}
-            //     updateItemsName[name]= event.target.value
-            //     this.setState({items: updateItems})
-            // }
+          
 
            
-                    // handleChange = event => {
-                    //     this.setState({
-                            
-                    //         [event.target.name]: event.target.value,
-                        
-                    //     })
-                    //     console.log(this.state)
-                    // }
-
+                 
             
 
 
@@ -77,17 +46,92 @@ class addInventory extends Component {
         return (
             <div className="card bg-light" style={{color:"black", width:"18rem",margin: "0 auto"}}>
 
-                <div className="form"  >
+                <form onSubmit={this.handleSubmit}  >
 
-                     <div className="">
                       <label htmlFor="inputItemname" >Item Name</label>
-                      <input type="text" className="form-control"  
-                         placeholder="Item Name" 
-                         onChange={this.handleChange}
+                      <input
+                        placeholder="Item Name" 
+                        onChange={this.handleChange}
+                        type="text"
+                        name="name"
+                        id="name"
+                        className="form-control"  
+                        required
+                        value={this.state.name}
                        />
-                     </div>
-                </div>
-                <button type="submit" onClick={this.handleSubmit}  className="btn btn-success">Add to inventory</button>
+                        <label htmlFor="inputItemname" >Price </label>
+                      <input
+                        placeholder="Item Price" 
+                        onChange={this.handleChange}
+                        type="text"
+                        name="price"
+                        id="price"
+                        className="form-control"  
+                        required
+                         value={this.state.price}
+                       />
+                         <label htmlFor="inputItemname" >sku </label>
+                      <input
+                        placeholder="Item Sku" 
+                        onChange={this.handleChange}
+                        type="number"
+                        name="sku"
+                        id="sku"
+                        className="form-control"  
+                        required
+                         value={this.state.sku}
+                       />
+                         <label htmlFor="inputItemname" >description </label>
+                      <input
+                        placeholder="Item description" 
+                        onChange={this.handleChange}
+                        type="text"
+                        name="description"
+                        id="description"
+                        className="form-control"  
+                        required
+                         value={this.state.sku}
+                       />
+                        <label htmlFor="inputItemname" >Photo Url </label>
+                      <input
+                        placeholder="Item Photo" 
+                        onChange={this.handleChange}
+                        type="text"
+                        name="photo"
+                        id="photo"
+                        className="form-control"  
+                        required
+                         value={this.state.photo}
+                       />
+                        <label htmlFor="inputItemname" ># available </label>
+                      <input
+                        placeholder="Item available" 
+                        onChange={this.handleChange}
+                        type="number"
+                        name="available"
+                        id="available"
+                        className="form-control"  
+                        required
+                         value={this.state.available}
+                       />
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <button type="submit" className="btn btn-success">Add to inventory</button>
+
+                </form>
+
+               
 
             </div>
             
