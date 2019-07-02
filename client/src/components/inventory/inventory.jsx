@@ -51,7 +51,7 @@ class inventory extends Component {
         return (
             <div>
 
-            <h1 className='card bg-dark'>Items</h1>
+            <h1 className='card bg-dark' style={{color:"white"}}>Items</h1>
                 <div className="container-fluid row" style={{display:"flex", justifyContent:"space-around"}} >
                     {this.state.items.map((item, index) => {
                         return (
