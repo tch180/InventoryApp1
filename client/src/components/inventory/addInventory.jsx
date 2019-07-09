@@ -11,7 +11,8 @@ class addInventory extends Component {
                     description:'',
                     photo:'',
                     available:'',
-                   } 
+                   } ,
+                 
             }
        
             
@@ -117,7 +118,7 @@ class addInventory extends Component {
                             required
                             value={this.state.available}
                         />
-                        <button type="submit" className="btn btn-success">Add to inventory</button>
+                        <button type="submit" className="btn btn-success mt-2">Add to inventory</button>
 
                     </form>
 

@@ -66,7 +66,7 @@ class inventory extends Component {
                                         <h5 className="card-text"># available: {item.available}</h5>
                                         <h5 className="card-text"> Product Description:  {item.description}</h5>
                                 <hr/>
-                                <button className="btn btn-success">Order</button>
+                                <button className="btn btn-success ">Order</button>
                                 <button type="submit" onClick={() => this.deleteItem(item.id)} className="btn btn-danger">Delete</button>
 
 
