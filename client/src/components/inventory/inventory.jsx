@@ -24,7 +24,7 @@ class inventory extends Component {
             const res = await axios.get(`/api/items/`);
             await this.setState({items: res.data});
             console.log(res.data)
-            console.log("Port = ",process.env.PORT)
+            console.log("Port = ", process.env.PORT)
             return res.data;
             
         } 
@@ -66,9 +66,12 @@ class inventory extends Component {
                                         <h5 className="card-text"># available: {item.available}</h5>
                                         <h5 className="card-text"> Product Description:  {item.description}</h5>
                                 <hr/>
-                                <button className="btn btn-success ">Order</button>
+                                <div className="inventory Control" style={{display:"flex", justifyContent:"space-evenly"}}>
+                                    <button className="btn btn-success ">Order</button>
                                 <button type="submit" onClick={() => this.deleteItem(item.id)} className="btn btn-danger">Delete</button>
 
+                                </div>
+                                
 
 
 

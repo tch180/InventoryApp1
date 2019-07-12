@@ -17,13 +17,16 @@ class addInventory extends Component {
        
             
         ///////////////
-        // Handle Submit Works, 71Handle Change works and is capturing data, I believe this is because the form needed to have the ID and Name Fields set to each one.  
+        // Handle Submit Works, Handle Change works and is capturing data, 
+        // I believe this is because the form needed to have the ID 
+        // and Name Fields set to each one.  
         ///////////////
 
     
 
             handleSubmit = async (event) => {
-                // event.preventDefault(); removing will allow the page to refresh on submit, needs a slightly better solution, Want to add 
+                // event.preventDefault(); removing will allow the page to refresh on submit, 
+                // needs a slightly better solution, Want to add 
                 await  axios.post(`/api/items`, { items: this.state.items });
                
                 console.log("Submitting", this.state.items)

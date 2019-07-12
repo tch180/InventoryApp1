@@ -12,10 +12,11 @@ class navbar extends Component {
 
         handleChange = () => {
             this.setState({
-              query: this.search.value
+              query: this.state.value
             }, () => {
-              if (this.state.query && this.state.query.length > 1) {
+              if (this.state.query && this.state.query.length > 1 ) {
                 if (this.state.query.length % 2 === 0) {
+                // returns all items in the db. 
                   this.getAllItems()
                 }
               } else if (!this.state.query) {
@@ -55,26 +56,33 @@ class navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="/"> <i class="fas fa-home"></i>  Home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="/"> <i className="fas fa-home"></i>  Home <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <a className="nav-link" href="/signIn-SignUp">Sign In / Sign Up</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i className="fas fa-tools"></i> <span>Admin tools</span> 
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="/admin"> <i class="fas fa-users-cog"></i> admin</a>
-                            <a className="dropdown-item" href="/Inventory"> <i class="fas fa-users"></i> Customer View </a>
+                            <a className="dropdown-item" href="/admin"> <i className="fas fa-users-cog"></i> admin</a>
+                            <a className="dropdown-item" href="/Inventory"> <i className="fas fa-users"></i> Customer View </a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/add-Inventory"><i class="fas fa-warehouse"></i>  Add Inventory</a>
+                            <a className="dropdown-item" href="/add-Inventory"><i className="fas fa-warehouse"></i>  Add Inventory</a>
                             </div>
                         </li>
                         </ul>
-
-                        <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search"  ref={input => this.search = input}
+                        {/* ///////////////
+                        // Search function is not fully fuctional
+                        // I believe that I need a 3rd party gem at this point 
+                        // will try tweaking the search function as it could be that my call is wrong and I am not sending the values
+                        /////////////// */}
+                        
+                        {/* <form className="form-inline my-2 my-lg-0">
+                        <input className="form-control mr-sm-2" 
+                         type="search" placeholder="Search" 
+                         ref={input => this.search = input}
                          onChange={this.handleChange} aria-label="Search" />
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                          <div>
@@ -82,7 +90,7 @@ class navbar extends Component {
                             
                         </div>
 
-                        </form>
+                        </form> */}
                     </div>
                     </nav>
             </div>
