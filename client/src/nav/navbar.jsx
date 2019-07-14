@@ -56,14 +56,17 @@ class navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="/"> <i className="fas fa-home"></i>  Home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="/"> <i className="fas fa-home"></i>  Home </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/signIn-SignUp">Sign In / Sign Up</a>
+                            <a className="nav-link" href="/signIn-SignUp"> <i className="fas fa-sign-in-alt"></i>  Sign In / Sign Up</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href=""> <i className="fas fa-user-circle"></i>  My Account</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i className="fas fa-tools"></i> <span>Admin tools</span> 
+                            <i className="fas fa-toolbox"></i> <span> Admin tools</span> 
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href="/admin"> <i className="fas fa-users-cog"></i> admin</a>
@@ -73,6 +76,7 @@ class navbar extends Component {
                             </div>
                         </li>
                         </ul>
+
                         {/* ///////////////
                         // Search function is not fully fuctional
                         // I believe that I need a 3rd party gem at this point 

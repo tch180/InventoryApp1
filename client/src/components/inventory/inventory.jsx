@@ -24,7 +24,7 @@ class inventory extends Component {
             const res = await axios.get(`/api/items/`);
             await this.setState({items: res.data});
             console.log(res.data)
-            console.log("Port = ", process.env.PORT)
+            // console.log("Port = ", process.env.PORT)
             return res.data;
             
         } 

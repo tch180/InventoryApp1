@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 export default class previewItem extends Component {
+
+
+
+
+
   render() {
     return (
       <div> 
@@ -34,12 +39,12 @@ export default class previewItem extends Component {
                     <img src="https://www.placecage.com/640/360
 " className="card-img-top" alt="Item Photo"/>
                     <div className="card-body">
-                      <h5 className="card-title">Item Name</h5>
-                      <p className="card-text">Item Description</p>
+                      <h5 className="card-title">Item Name:</h5>
+                      <p className="card-text">Item Description:</p>
                     </div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item">Price:</li>
-                      <li className="list-group-item"># available</li>
+                      <li className="list-group-item"># available:</li>
                     </ul>
                     <div className="card-body"  style={{display:"flex", justifyContent:"space-evenly"}}>
                       <button href="#" className="btn btn-warning">Edit</button>

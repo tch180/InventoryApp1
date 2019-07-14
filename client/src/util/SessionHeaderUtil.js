@@ -15,9 +15,10 @@ export function saveAuthTokens (headers) {
 
 export function userIsLoggedIn() {
     const userLoggedIn= (
-        !!localStorage.getItem('access-token')&&
+        !!localStorage.getItem('access-token') &&
         !!localStorage.getItem('client')&&
-        !!localStorage.getItem('uid')
+        !!localStorage.getItem('uid') &&
+        !!localStorage.getItem('expiry')
     )
     return userLoggedIn
 }

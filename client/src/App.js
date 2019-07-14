@@ -19,6 +19,22 @@ class App extends Component {
     signedIn: false
   }
 
+
+
+
+  async componentWillMount() {
+    try {
+      const signedIn = userIsLoggedIn()
+      if(signedIn){
+        setAxiosDefaults()
+        this.setState({signedIn})
+        console.log("setting defaults and changing state to true ")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
       signUp = async(email,password,password_confirmation) =>{
         try { 
           const payload = {
@@ -28,13 +44,14 @@ class App extends Component {
           }
           const response = await axios.post(`/auth` ,payload)
           saveAuthTokens(response.headers)
-          this.setState({signedIn: true})
+          this.setState({signedIn: true,})
           console.log("submitting")
 
         } catch(error) {
           console.log(error)
         }
       }
+
 
       signIn = async(email,password)=> {
         try {
@@ -43,7 +60,7 @@ class App extends Component {
             password
           }
         const response = await axios.post(`/auth/sign_in`,payload)
-        saveAuthTokens(response.headers)
+        saveAuthTokens(response.headers);
           this.setState({signedIn: true})
           console.log("signing in")
         } catch(error) {
