@@ -33,6 +33,6 @@ export function setAxiosDefaults(){
 export function clearAuthTokens() {
     localStorage.removeItem('access-token');
     localStorage.removeItem('client');
-    localStorage.removeItem('uid')
+    localStorage.removeItem('uid');
     localStorage.removeItem('expiry')
 }

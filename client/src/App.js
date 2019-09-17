@@ -8,15 +8,15 @@ import admin from './components/admin/admin';
 import Navbar from '../src/nav/navbar';
 import axios from 'axios';
 import SignUp from './components/signUp';
-import signIn from './components/signUp'
+// import signIn from './components/signUp'
 import {saveAuthTokens, userIsLoggedIn, setAxiosDefaults, clearAuthTokens} from "./util/SessionHeaderUtil"
 
 
 
 class App extends Component {
-
   state = {
     signedIn: false
+    
   }
 
 
@@ -35,7 +35,7 @@ class App extends Component {
     }
   }
 
-      signUp = async(email,password,password_confirmation) =>{
+      signUp = async(email,password,password_confirmation) => {
         try { 
           const payload = {
             email: email,
@@ -46,12 +46,10 @@ class App extends Component {
           saveAuthTokens(response.headers)
           this.setState({signedIn: true,})
           console.log("submitting")
-
         } catch(error) {
           console.log(error)
         }
       }
-
 
       signIn = async(email,password)=> {
         try {
@@ -67,13 +65,15 @@ class App extends Component {
           console.log(error)
         }
       }
-
+    
+    
 
 
 
 
 
 render(){
+
   const SignUpComponent = () => (
     <SignUp
     signUp={this.signUp}
@@ -96,7 +96,7 @@ render(){
             <Route exact path="/signIn" render={SignUpComponent} />
 
           </Switch>
-          {this.state.signedIn ?   <Redirect to="/admin"/> : <Redirect to="/signIn"/>}
+          {/* {this.state.signedIn ?   <Redirect to="/admin"/> : <Redirect to="/si"/>} */}
 
         </Router>
       </React.Fragment>

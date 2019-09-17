@@ -36,8 +36,7 @@ export default class previewItem extends Component {
                   <div className="modal-body">
                     
                   <div className="card" style={{width: "18rem", margin: "0 auto"}}>
-                    <img src="https://www.placecage.com/640/360
-" className="card-img-top" alt="Item Photo"/>
+                    <img src="https://www.placecage.com/640/360" className="card-img-top" alt="Item Photo"/>
                     <div className="card-body">
                       <h5 className="card-title">Item Name:</h5>
                       <p className="card-text">Item Description:</p>

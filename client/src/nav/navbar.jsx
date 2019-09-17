@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Search from '../components/search';
+import {clearAuthTokens} from "../util/SessionHeaderUtil"
 
+
+
+
+// import Search from '../components/search';
 class navbar extends Component {
 
         state = {
             query: '',
             results: [],
+            signedIn: false,
         }
 
 
@@ -28,11 +33,10 @@ class navbar extends Component {
             try{ 
                 const res = await axios.get(`/api/items/`);
                 await this.setState({items: res.data});
+                // for search 
                 this.setState({results: res.data })               
                    console.log(res.data)
-                console.log("Port = ",process.env.PORT)
                 return res.data;
-                
             } 
             catch (err){
                 console.log(err)
@@ -40,7 +44,24 @@ class navbar extends Component {
                 return err.message
             }
         }
-        
+
+
+        signOut = async (event) => {
+            try {
+                event.preventDefault()
+                await axios.delete(`/auth/sign_out`)
+                clearAuthTokens();
+                this.setState({signedIn: false})
+                console.log(clearAuthTokens())
+                console.log("signing out")
+                // need to add redirect to home on signout
+            } catch(error) {
+                console.log(error)
+            }
+        }
+
+
+     
 
 
 
@@ -59,13 +80,13 @@ class navbar extends Component {
                             <a className="nav-link" href="/"> <i className="fas fa-home"></i>  Home </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/signIn-SignUp"> <i className="fas fa-sign-in-alt"></i>  Sign In / Sign Up</a>
+                            <a className="nav-link" href="/signIn"> <i className="fas fa-sign-in-alt"></i>  Sign In / Sign Up</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href=""> <i className="fas fa-user-circle"></i>  My Account</a>
+                            <a className="nav-link" href="/accounts"> <i className="fas fa-user-circle"></i>  My Account</a>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i className="fas fa-toolbox"></i> <span> Admin tools</span> 
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -74,6 +95,9 @@ class navbar extends Component {
                             <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="/add-Inventory"><i className="fas fa-warehouse"></i>  Add Inventory</a>
                             </div>
+                        </li>
+                        <li className="nav-item">
+                            <button className="btn btn-danger" onClick={this.signOut} href="/"> <i className="far fa-hand-spock"></i> sign out </button>
                         </li>
                         </ul>
 
